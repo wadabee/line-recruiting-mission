@@ -2,7 +2,7 @@ import { parse } from "csv-parse";
 import { readFileSync } from "fs";
 import path from "path";
 import { InputFormat } from "./@types/TaxiPricingCalculator";
-import calculate from "./TaxiPricingCalculator";
+import TaxiPricingCalculator from "./TaxiPricingCalculator";
 
 (() => {
   const csvFilePath = path.resolve(__dirname, "data/input.csv");
@@ -18,7 +18,7 @@ import calculate from "./TaxiPricingCalculator";
         console.error(error);
       }
 
-      calculate(result);
+      new TaxiPricingCalculator(result);
     }
   );
 })();

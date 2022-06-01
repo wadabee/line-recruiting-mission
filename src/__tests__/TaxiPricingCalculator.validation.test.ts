@@ -1,11 +1,11 @@
 import { InputFormat } from "../@types/TaxiPricingCalculator";
-import calculate from "../TaxiPricingCalculator";
+import TaxiPricingCalculator from "../TaxiPricingCalculator";
 
 describe("TaxiPricingCalculator", () => {
   describe("validationテスト", () => {
     const expectError = (data: InputFormat[]) => {
       expect(() => {
-        calculate(data);
+        new TaxiPricingCalculator(data);
       }).toThrowError();
     };
 
