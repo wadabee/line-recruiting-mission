@@ -1,1 +1,1 @@
-export type InputFormat = [string, number];
+export type InputFormat = [string, string];
