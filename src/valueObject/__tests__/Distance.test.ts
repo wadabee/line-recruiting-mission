@@ -30,4 +30,25 @@ describe("Distance", () => {
       });
     });
   });
+
+  describe("toNumber", () => {
+    test("Number型でdistanceを取得", () => {
+      const dis = new Distance("12.3");
+      expect(dis.toNumber()).toBe(12.3);
+    });
+  });
+
+  describe("add", () => {
+    test("加算されること", () => {
+      const disTarget = new Distance("10.0");
+      const dis1 = new Distance("32.1");
+      const dis2 = new Distance("40.0");
+
+      disTarget.add(dis1);
+      expect(disTarget.toNumber()).toBe(42.1);
+
+      disTarget.add(dis2);
+      expect(disTarget.toNumber()).toBe(82.1);
+    });
+  });
 });

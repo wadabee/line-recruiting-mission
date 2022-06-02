@@ -6,6 +6,14 @@ class Distance {
     }
     this.distance_ = Number.parseFloat(distance);
   }
+
+  public toNumber(): number {
+    return this.distance_;
+  }
+
+  public add(distance: Distance): void {
+    this.distance_ += distance.toNumber();
+  }
 }
 
 export default Distance;
