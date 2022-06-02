@@ -6,14 +6,13 @@ describe("Distance", () => {
       const expectError = (testData: string) => {
         expect(() => {
           new Distance(testData);
-        }).toThrowError("00.0形式で入力してください");
+        }).toThrowError("00.0形式または、0.0形式で入力してください");
       };
 
       test("小数点がない", () => {
         expectError("000");
       });
       test("桁数が異なる", () => {
-        expectError("1.1");
         expectError("12.12");
         expectError("123.1");
       });
@@ -22,6 +21,11 @@ describe("Distance", () => {
       test("正しいフォーマット", () => {
         expect(() => {
           new Distance("12.3");
+        }).not.toThrowError();
+      });
+      test("正しいフォーマット", () => {
+        expect(() => {
+          new Distance("1.2");
         }).not.toThrowError();
       });
     });

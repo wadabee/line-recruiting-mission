@@ -59,9 +59,29 @@ describe("TaxiPricingCalculator", () => {
       expectError(TEST_DATA);
     });
 
-    test.todo("1行目の走行距離が0ではない");
-    test.todo("乗車時間が100時間以上");
-    test.todo("走行距離が100以上");
-    test.todo("総走行距離が0");
+    test("1行目の走行距離が0ではない", () => {
+      const TEST_DATA: InputFormat[] = [
+        ["00:00:00.000", "0.1"],
+        ["01:00:00.000", "0.2"],
+      ];
+      expectError(TEST_DATA);
+    });
+
+    test("走行距離が0", () => {
+      const TEST_DATA: InputFormat[] = [
+        ["00:00:00.000", "0.0"],
+        ["01:00:00.000", "0.0"],
+      ];
+      expectError(TEST_DATA);
+    });
+
+    test("時系列順になっていない", () => {
+      const TEST_DATA: InputFormat[] = [
+        ["00:00:00.000", "0.0"],
+        ["00:00:02.000", "1.0"],
+        ["00:00:01.000", "2.0"],
+      ];
+      expectError(TEST_DATA);
+    });
   });
 });
