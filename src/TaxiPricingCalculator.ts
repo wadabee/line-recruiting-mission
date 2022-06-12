@@ -34,7 +34,7 @@ class TaxiPricingCalculator {
     // TODO:refactor
     const total = this.totalDistance_.toNumber() - 1052;
     if (total > 0) {
-      return this.price_ + 80 * (Math.floor(total / 237) + 1);
+      return this.price_ + 80 * Math.ceil(total / 237);
     } else {
       return this.price_;
     }
